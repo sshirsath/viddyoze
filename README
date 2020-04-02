@@ -1,0 +1,63 @@
+Following are the five files in my submission:
+
+1. README
+   This file explains the steps to execute for successfully running the program.
+2. test.php
+   This file is used to call add() and total() functions to test the program.
+3. database.php 
+   This file establishes connection with the MySQL database created on localhost.
+4. initialize.php
+   This file initializes the product catalogue, delivery charges, and offers by querying the relevant tables from the MySQL database connected above.
+5. basket.php
+   This file implements add() and total() functions along with other necessary functions to calculate the right output for the given input.
+
+
+IMPORTANT: Run the following commands in MySQL server on 127.0.0.1 (localhost) with 'root' as username and 'password' as password  to create and populate the necessary database and tables:
+
+CREATE DATABASE acme_widget;
+
+USE acme_widget;
+
+CREATE TABLE `products` (
+	`id` int AUTO_INCREMENT,
+	`name` varchar(255) NOT NULL,
+	`code` varchar(255) NOT NULL,
+	`price` varchar(255) NOT NULL,
+	PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `products` (name, code, price) VALUES
+('Red Widget', 'R01', '32.95'),
+('Green Widget', 'G01', '24.95'),
+('Blue Widget', 'B01', '7.95');
+
+CREATE TABLE `offers` (
+	`id` int AUTO_INCREMENT,
+	`product_code` varchar(255) NOT NULL,
+	`offer_name` varchar(255) NOT NULL,
+	PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `offers` (product_code, offer_name) VALUES ('R01', 'get_second_for_half_price');
+
+CREATE TABLE `delivery_charge_rules` (
+	`id` int AUTO_INCREMENT,
+	`upto` int NOT NULL,
+	`delivery_charge` varchar(255) NOT NULL,
+	PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `delivery_charge_rules` (upto, delivery_charge) VALUES
+(50, '4.95'),
+(90, '2.95');
+
+
+Assumptions:
+
+1. There are no offers that involve two products in the same offer.
+2. There is no limit on number of items for each product type.
+3. All calculations are in USD and can be displayed in UI directly (up to two decimal points).
+4. Only the bare minimum columns are added to each table but they can be easily extended.
+5. Delete functionality is not implemented but is fairly simple to implement, if necessary.
+
+
