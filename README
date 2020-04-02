@@ -3,7 +3,7 @@ Following are the five files in my submission:
 1. README
    This file explains the steps to execute for successfully running the program.
 2. test.php
-   This file is used to call add() and total() functions to test the program.
+   This file is used to call add() and total() functions to test the program [Run it on command line (./test.php) once the relevant calls are added to the file].
 3. database.php 
    This file establishes connection with the MySQL database created on localhost.
 4. initialize.php
